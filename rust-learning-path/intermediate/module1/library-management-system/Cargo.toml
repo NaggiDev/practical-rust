@@ -1,0 +1,25 @@
+[package]
+name = "library-management-system"
+version = "0.1.0"
+edition = "2021"
+authors = ["Rust Learning Path <example@example.com>"]
+description = "A command-line library management system demonstrating ownership and borrowing concepts"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Error handling
+thiserror = "1.0"      # For custom error types
+
+# Command line
+clap = { version = "4.4", features = ["derive"] }  # Command line argument parsing
+colored = "2.0"        # Terminal text coloring
+
+# Utilities
+chrono = "0.4"         # Date and time for due dates
+rand = "0.8"           # Random number generation for user IDs
+
+[dev-dependencies]
+# Testing
+assert_cmd = "2.0"     # Command-line testing
+predicates = "3.0"     # Assertions for command-line testing

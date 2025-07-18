@@ -1,0 +1,62 @@
+[package]
+name = "[project-name]"
+version = "0.1.0"
+edition = "2021"
+authors = ["[Your Name] <[your.email@example.com]>"]
+description = "[Brief description of the project]"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Common dependencies for all projects
+# (Uncomment as needed for your specific project)
+
+# Error handling
+# thiserror = "1.0"      # For custom error types
+# anyhow = "1.0"         # For simple error handling
+
+# Command line
+# clap = { version = "4.4", features = ["derive"] }  # Command line argument parsing
+# colored = "2.0"        # Terminal text coloring
+# indicatif = "0.17"     # Progress bars and spinners
+
+# Serialization/Deserialization
+# serde = { version = "1.0", features = ["derive"] }  # Serialization framework
+# serde_json = "1.0"     # JSON support for serde
+# toml = "0.8"           # TOML support
+
+# Async programming
+# tokio = { version = "1.32", features = ["full"] }  # Async runtime
+# futures = "0.3"        # Async utilities
+
+# Web and networking
+# reqwest = { version = "0.11", features = ["json"] }  # HTTP client
+# axum = "0.6"           # Web framework
+# hyper = "0.14"         # HTTP implementation
+
+# Database
+# sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "sqlite"] }  # SQL toolkit
+# rusqlite = "0.29"      # SQLite bindings
+
+# Utilities
+# chrono = "0.4"         # Date and time
+# rand = "0.8"           # Random number generation
+# regex = "1.9"          # Regular expressions
+# lazy_static = "1.4"    # Lazily evaluated statics
+
+[dev-dependencies]
+# Testing
+# mockall = "0.11"       # Mocking library
+# criterion = "0.5"      # Benchmarking
+
+# [[bin]]
+# name = "[binary-name]"
+# path = "src/main.rs"
+
+# [lib]
+# name = "[library-name]"
+# path = "src/lib.rs"
+
+# [features]
+# default = []
+# [feature-name] = []

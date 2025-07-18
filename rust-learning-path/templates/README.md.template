@@ -1,0 +1,103 @@
+# [Project Name]
+
+## Project Overview
+
+This project is part of the [Level Name] level in the Rust Learning Path. It focuses on [brief description of what the project does and its purpose].
+
+## Learning Objectives
+
+By completing this project, you will:
+- [Learning objective 1]
+- [Learning objective 2]
+- [Learning objective 3]
+- [Learning objective 4]
+
+## Prerequisites
+
+Before starting this project, you should:
+- Have completed [previous project or module references]
+- Be familiar with [list of concepts or skills needed]
+- Have [any other prerequisites]
+
+## Project Structure
+
+```
+project-name/
+├── README.md           # Project overview and instructions
+├── src/                # Source code directory
+│   └── main.rs         # Entry point for the application
+├── tests/              # Test directory
+│   └── integration_tests.rs  # Integration tests
+├── Cargo.toml          # Project dependencies and metadata
+└── CONCEPTS.md         # Detailed explanation of Rust concepts used
+```
+
+## Step-by-Step Instructions
+
+### Step 1: [Step Name]
+
+[Detailed instructions for step 1]
+
+```rust
+// Code example for step 1
+fn example_function() {
+    println!("This is an example for step 1");
+}
+```
+
+**Concepts Applied:**
+- [Concept 1]: [Brief explanation]
+- [Concept 2]: [Brief explanation]
+
+### Step 2: [Step Name]
+
+[Detailed instructions for step 2]
+
+```rust
+// Code example for step 2
+fn another_example() {
+    let result = "Step 2 example";
+    println!("{}", result);
+}
+```
+
+**Concepts Applied:**
+- [Concept 3]: [Brief explanation]
+- [Concept 4]: [Brief explanation]
+
+### Step 3: [Step Name]
+
+[Detailed instructions for step 3]
+
+## Testing Your Implementation
+
+This project includes tests to validate your implementation:
+
+```bash
+cargo test
+```
+
+The tests will verify that:
+- [Test criterion 1]
+- [Test criterion 2]
+- [Test criterion 3]
+
+## Extension Challenges
+
+Once you've completed the basic implementation, try these extension challenges:
+
+1. **[Challenge Name]**: [Description of the challenge]
+2. **[Challenge Name]**: [Description of the challenge]
+3. **[Challenge Name]**: [Description of the challenge]
+
+## Next Steps
+
+After completing this project, you should move on to:
+- [Next project or module reference]
+- Explore [related concept or resource]
+
+## Resources
+
+- [Resource 1]: [Link or description]
+- [Resource 2]: [Link or description]
+- [Official Rust Documentation on related concepts]: [Link]

@@ -1,0 +1,19 @@
+[package]
+name = "file-explorer"
+version = "0.1.0"
+edition = "2021"
+authors = ["Rust Learning Path"]
+description = "A simple command-line file system explorer for learning Rust file I/O"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# Command line
+clap = { version = "4.4", features = ["derive"] }  # Command line argument parsing
+colored = "2.0"        # Terminal text coloring
+
+[dev-dependencies]
+# Testing
+tempfile = "3.8"       # For creating temporary test directories
+assert_cmd = "2.0"     # For testing command-line applications
+predicates = "3.0"     # For assertions in command-line tests
