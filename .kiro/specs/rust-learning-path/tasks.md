@@ -284,7 +284,12 @@
     - Write detailed explanations of async runtime concepts
     - _Requirements: 2.1, 2.2, 2.3, 3.4_
 
-  - [ ] 5.3 Implement Custom Runtime project
+  - [x] 5.3 Implement Custom Runtime project
+
+
+
+
+
     - Create project structure with README.md and step-by-step instructions
     - Implement starter code for a simple async runtime
     - Develop test suite for validating executor behavior

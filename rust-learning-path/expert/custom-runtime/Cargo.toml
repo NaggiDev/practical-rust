@@ -1,0 +1,12 @@
+[package]
+name = "custom-runtime"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# We keep dependencies minimal to understand the core concepts
+# In a real runtime, you'd likely use more sophisticated libraries
+
+[dev-dependencies]
+# For testing async code
+tokio-test = "0.4"
