@@ -320,7 +320,11 @@
     - Write detailed explanations of optimization concepts
     - _Requirements: 2.1, 2.2, 2.3, 3.4_
 
-  - [ ] 5.6 Create Expert Level capstone project
+  - [x] 5.6 Create Expert Level capstone project
+
+
+
+
     - Develop a project that combines all concepts from the Expert Level
     - Implement comprehensive test suite for the capstone
     - Create extension challenges for additional practice

@@ -1,0 +1,74 @@
+[workspace]
+members = [
+    "coordinator",
+    "worker", 
+    "shared",
+    "client/cli"
+]
+resolver = "2"
+
+[workspace.dependencies]
+# Async runtime and networking
+tokio = { version = "1.35", features = ["full"] }
+tokio-util = "0.7"
+futures = "0.3"
+async-trait = "0.1"
+
+# Networking and protocols
+reqwest = { version = "0.11", features = ["json"] }
+axum = "0.7"
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+hyper = "1.0"
+tungstenite = "0.21"
+tokio-tungstenite = "0.21"
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+bincode = "1.3"
+
+# Performance and SIMD
+rayon = "1.8"
+crossbeam = "0.8"
+parking_lot = "0.12"
+dashmap = "5.5"
+wide = "0.7"
+memmap2 = "0.9"
+
+# Compiler integration
+syn = { version = "2.0", features = ["full", "extra-traits"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+
+# Error handling and logging
+anyhow = "1.0"
+thiserror = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# CLI and configuration
+clap = { version = "4.4", features = ["derive"] }
+config = "0.14"
+uuid = { version = "1.6", features = ["v4", "serde"] }
+
+# Database and caching
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "sqlite"] }
+redis = { version = "0.24", features = ["tokio-comp"] }
+
+# Metrics and monitoring
+metrics = "0.22"
+metrics-exporter-prometheus = "0.13"
+
+# Testing
+criterion = { version = "0.5", features = ["html_reports"] }
+tempfile = "3.8"
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[profile.dev]
+debug = 1
