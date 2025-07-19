@@ -1,0 +1,66 @@
+[package]
+name = "capstone-project"
+version = "0.1.0"
+edition = "2021"
+authors = ["Rust Learning Path"]
+description = "Advanced Level Capstone Project - High-Performance Task Execution Engine"
+
+[lib]
+name = "capstone_project"
+path = "src/lib.rs"
+
+[dependencies]
+# Core dependencies
+tokio = { version = "1.0", features = ["full"] }
+crossbeam = "0.8"
+parking_lot = "0.12"
+futures = "0.3"
+num_cpus = "1.0"
+
+# Procedural macros
+syn = { version = "2.0", features = ["full"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+
+# FFI and unsafe operations
+libc = "0.2"
+
+# Error handling
+thiserror = "1.0"
+anyhow = "1.0"
+
+# Serialization (for configuration)
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Metrics and monitoring
+metrics = "0.21"
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+proptest = "1.0"
+tempfile = "3.0"
+
+[build-dependencies]
+cc = "1.0"
+
+[[bench]]
+name = "benchmarks"
+harness = false
+
+[[example]]
+name = "basic_usage"
+path = "examples/basic_usage.rs"
+
+[[example]]
+name = "advanced_features"
+path = "examples/advanced_features.rs"
+
+[[example]]
+name = "performance_demo"
+path = "examples/performance_demo.rs"
+
+[features]
+default = ["metrics"]
+metrics = []
+debug = []

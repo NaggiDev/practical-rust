@@ -1,0 +1,27 @@
+[package]
+name = "dsl-project"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = { version = "2.0", features = ["full", "extra-traits"] }
+quote = "1.0"
+proc-macro2 = "1.0"
+
+[dev-dependencies]
+trybuild = "1.0"
+
+[[example]]
+name = "basic_config"
+path = "examples/basic_config.rs"
+
+[[example]]
+name = "nested_config"
+path = "examples/nested_config.rs"
+
+[[example]]
+name = "validation_example"
+path = "examples/validation_example.rs"

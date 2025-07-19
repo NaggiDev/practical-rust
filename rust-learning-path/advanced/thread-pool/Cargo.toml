@@ -1,0 +1,15 @@
+[package]
+name = "thread-pool"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# No external dependencies - we'll build everything from scratch using std library
+
+[dev-dependencies]
+# For testing and benchmarking
+criterion = "0.5"
+
+[[bench]]
+name = "thread_pool_bench"
+harness = false

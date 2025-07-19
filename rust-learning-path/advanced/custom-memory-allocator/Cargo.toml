@@ -1,0 +1,18 @@
+[package]
+name = "custom-memory-allocator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[dev-dependencies]
+# For property-based testing
+proptest = "1.0"
+
+[[bin]]
+name = "allocator_demo"
+path = "src/main.rs"
+
+[lib]
+name = "custom_allocator"
+path = "src/lib.rs"
