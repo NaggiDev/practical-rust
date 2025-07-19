@@ -1,0 +1,10 @@
+[package]
+name = "custom-data-structure"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[[bin]]
+name = "main"
+path = "src/main.rs"

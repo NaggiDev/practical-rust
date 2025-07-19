@@ -1,0 +1,56 @@
+[package]
+name = "capstone-project"
+version = "0.1.0"
+edition = "2021"
+authors = ["Rust Learning Path"]
+description = "Intermediate Level Capstone Project: Distributed Task Queue System"
+
+[dependencies]
+# Serialization and deserialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Command line interface
+clap = { version = "4.0", features = ["derive"] }
+
+# Async runtime (for advanced features)
+tokio = { version = "1.0", features = ["full"], optional = true }
+
+# Logging
+log = "0.4"
+env_logger = "0.10"
+
+# UUID generation for task IDs
+uuid = { version = "1.0", features = ["v4", "serde"] }
+
+# Time handling
+chrono = { version = "0.4", features = ["serde"] }
+
+[dev-dependencies]
+# Testing utilities
+tempfile = "3.0"
+criterion = "0.5"
+
+[features]
+default = []
+async = ["tokio"]
+
+[[bin]]
+name = "task-queue"
+path = "src/main.rs"
+
+[[example]]
+name = "basic_usage"
+path = "examples/basic_usage.rs"
+
+[[example]]
+name = "custom_tasks"
+path = "examples/custom_tasks.rs"
+
+[[example]]
+name = "monitoring_demo"
+path = "examples/monitoring_demo.rs"
+
+[[bench]]
+name = "task_queue_benchmark"
+harness = false

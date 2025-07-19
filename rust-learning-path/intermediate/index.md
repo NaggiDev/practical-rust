@@ -30,19 +30,19 @@ Deep dive into borrowing, lifetimes, and reference counting.
 **Projects:**
 - [Library Management System](module1/library-system/README.md)
 
-### [Module 2: Traits and Generics](module2/index.md)
+### [Module 2: Traits and Generics](custom-data-structure/README.md)
 
 Learn how to create flexible and reusable code with traits and generics.
 
 **Projects:**
-- [Custom Data Structure Implementation](module2/custom-data-structure/README.md)
+- [Custom Data Structure Implementation](custom-data-structure/README.md)
 
-### [Module 3: Collections and Concurrency](module3/index.md)
+### [Module 3: Collections and Concurrency](multi-threaded-web-scraper/README.md)
 
 Work with complex data structures and multi-threaded programming.
 
 **Projects:**
-- [Multi-threaded Web Scraper](module3/web-scraper/README.md)
+- [Multi-threaded Web Scraper](multi-threaded-web-scraper/README.md)
 
 ### [Module 4: Error Handling Patterns](module4/index.md)
 

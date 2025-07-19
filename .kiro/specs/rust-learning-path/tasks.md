@@ -141,21 +141,42 @@
     - Write detailed explanations of threading and synchronization concepts
     - _Requirements: 2.1, 2.2, 2.3, 3.2_
 
-  - [ ] 3.4 Implement Custom Data Structure project
+  - [x] 3.4 Implement Custom Data Structure project
+
+
+
+
+
     - Create project structure with README.md and step-by-step instructions
     - Implement starter code for a custom collection type
     - Develop test suite for validating data structure operations
     - Write detailed explanations of traits and generics concepts
     - _Requirements: 2.1, 2.2, 2.3, 3.2_
 
-  - [ ] 3.5 Implement Command Line Database Tool project
+  - [x] 3.5 Implement Command Line Database Tool project
+
+
+
+
+
+
+
+
+
+
+
     - Create project structure with README.md and step-by-step instructions
     - Implement starter code for database operations
     - Develop test suite for validating data persistence
     - Write detailed explanations of error handling patterns
     - _Requirements: 2.1, 2.2, 2.3, 3.2_
 
-  - [ ] 3.6 Create Intermediate Level capstone project
+  - [x] 3.6 Create Intermediate Level capstone project
+
+
+
+
+
     - Develop a project that combines all concepts from the Intermediate Level
     - Implement comprehensive test suite for the capstone
     - Create extension challenges for additional practice
