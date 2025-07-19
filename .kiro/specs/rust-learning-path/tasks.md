@@ -126,7 +126,11 @@
     - Write detailed explanations of ownership and borrowing concepts
     - _Requirements: 2.1, 2.2, 2.3, 3.2_
 
-  - [ ] 3.3 Implement Multi-threaded Web Scraper project
+  - [x] 3.3 Implement Multi-threaded Web Scraper project
+
+
+
+
 
 
 
