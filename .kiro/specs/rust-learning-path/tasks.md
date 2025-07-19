@@ -258,14 +258,26 @@
     - Create extension challenges for additional practice
     - _Requirements: 4.2, 5.3_
 
-- [ ] 5. Implement Expert Level content
-  - [ ] 5.1 Develop Module 1: Async Programming
+- [-] 5. Implement Expert Level content
+
+
+
+  - [x] 5.1 Develop Module 1: Async Programming
+
+
     - Create module overview document explaining futures, async/await, and tokio
     - Implement code examples for each async concept
     - Write tests to validate understanding of async concepts
     - _Requirements: 3.4, 5.1_
 
-  - [ ] 5.2 Implement Asynchronous Network Server project
+  - [x] 5.2 Implement Asynchronous Network Server project
+
+
+
+
+
+
+
     - Create project structure with README.md and step-by-step instructions
     - Implement starter code for async network operations
     - Develop test suite for validating server behavior
