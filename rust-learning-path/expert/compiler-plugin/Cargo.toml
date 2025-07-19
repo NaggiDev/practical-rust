@@ -1,0 +1,48 @@
+[package]
+name = "compiler-plugin"
+version = "0.1.0"
+edition = "2021"
+
+# This is a procedural macro crate
+[lib]
+proc-macro = true
+
+[dependencies]
+# Core procedural macro dependencies
+proc-macro2 = "1.0"
+quote = "1.0"
+syn = { version = "2.0", features = ["full", "extra-traits"] }
+
+# For working with compiler internals (when available)
+# Note: These are unstable APIs and may change
+rustc_ast = { version = "0.0.0", optional = true }
+rustc_span = { version = "0.0.0", optional = true }
+rustc_errors = { version = "0.0.0", optional = true }
+
+# For diagnostics and error handling
+thiserror = "1.0"
+serde = { version = "1.0", features = ["derive"], optional = true }
+
+[dev-dependencies]
+# For testing procedural macros
+trybuild = "1.0"
+tempfile = "3.0"
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+
+[build-dependencies]
+rustc_version = "0.4"
+
+[features]
+default = []
+# Enable when working with nightly compiler internals
+unstable = ["rustc_ast", "rustc_span", "rustc_errors", "serde"]
+
+# Example binary for testing the plugin
+[[example]]
+name = "usage"
+path = "examples/usage.rs"
+
+[package.metadata.docs.rs]
+# Documentation configuration
+rustdoc-args = ["--cfg", "docsrs"]
