@@ -64,7 +64,12 @@ After completing all modules and projects in the Intermediate Level, you should 
 
 ## Resources
 
+### Official Documentation
 - [The Rust Book - Understanding Ownership](https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html)
 - [The Rust Book - Using Structs to Structure Related Data](https://doc.rust-lang.org/book/ch05-00-structs.html)
 - [The Rust Book - Enums and Pattern Matching](https://doc.rust-lang.org/book/ch06-00-enums.html)
 - [The Rust Book - Generic Types, Traits, and Lifetimes](https://doc.rust-lang.org/book/ch10-00-generics.html)
+
+### Community Resources
+- [Community Resources Guide](../COMMUNITY_RESOURCES.md) - Essential guide to popular Rust crates and community engagement
+  - **Important for Intermediate Level**: Review the "Popular Rust Crates" section to understand the ecosystem tools you'll be using in projects

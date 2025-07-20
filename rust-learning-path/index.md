@@ -47,7 +47,12 @@ This learning path follows the "experience -> repeat -> learning" methodology:
 
 ## Resources
 
+### Learning Resources
 - [Official Rust Documentation](https://doc.rust-lang.org/)
 - [Rust Book](https://doc.rust-lang.org/book/)
 - [Rust by Example](https://doc.rust-lang.org/rust-by-example/)
 - [Rustlings](https://github.com/rust-lang/rustlings/)
+- [Concept Reference](CONCEPTS.md) - Comprehensive index of Rust concepts covered in this learning path
+
+### Community Resources
+- [Community Resources Guide](COMMUNITY_RESOURCES.md) - Complete guide to the Rust community, popular crates, and contributing to open source

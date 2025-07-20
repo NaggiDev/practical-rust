@@ -65,8 +65,13 @@ After completing all modules and projects in the Advanced Level, you should proc
 
 ## Resources
 
+### Official Documentation
 - [The Rust Book - Fearless Concurrency](https://doc.rust-lang.org/book/ch16-00-concurrency.html)
 - [The Rust Book - Unsafe Rust](https://doc.rust-lang.org/book/ch19-01-unsafe-rust.html)
 - [The Rust Book - Advanced Features](https://doc.rust-lang.org/book/ch19-00-advanced-features.html)
 - [The Rustonomicon - The Dark Arts of Unsafe Rust](https://doc.rust-lang.org/nomicon/)
 - [The Rust Reference](https://doc.rust-lang.org/reference/)
+
+### Community Resources
+- [Community Resources Guide](../COMMUNITY_RESOURCES.md) - Essential guide for advanced developers
+  - **Important for Advanced Level**: Review the "Contributing to Open Source" section to learn how to contribute to Rust projects and give back to the community

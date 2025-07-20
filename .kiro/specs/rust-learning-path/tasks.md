@@ -353,7 +353,12 @@
     - Develop a search mechanism for finding concept explanations
     - _Requirements: 6.4_
 
-  - [ ] 6.3 Create community resource guide
+  - [x] 6.3 Create community resource guide
+
+
+
+
+
     - Compile list of Rust community resources
     - Develop guide for engaging with the Rust community
     - Create reference for popular Rust crates and tools
