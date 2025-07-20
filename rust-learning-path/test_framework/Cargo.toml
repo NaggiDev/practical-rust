@@ -10,6 +10,10 @@ license = "MIT OR Apache-2.0"
 name = "test-runner"
 path = "main.rs"
 
+[[bin]]
+name = "quiz-runner"
+path = "quiz_runner.rs"
+
 [lib]
 name = "rust_learning_path_tests"
 path = "lib.rs"

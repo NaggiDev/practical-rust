@@ -376,7 +376,12 @@
     - Ensure all tests have clear failure messages
     - _Requirements: 5.1, 5.2_
 
-  - [-] 7.2 Implement concept validation quizzes
+  - [x] 7.2 Implement concept validation quizzes
+
+
+
+
+
 
     - Create quizzes for testing understanding of concepts
     - Develop automated grading for quizzes

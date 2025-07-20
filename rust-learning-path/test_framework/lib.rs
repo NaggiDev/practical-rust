@@ -6,6 +6,7 @@ pub mod basic_tests;
 pub mod intermediate_tests;
 pub mod advanced_tests;
 pub mod expert_tests;
+pub mod quiz_framework;
 
 pub use crate::framework::{TestResult, TestSuite, TestRunner, TestSummary, test_case, assert_with_msg};
 

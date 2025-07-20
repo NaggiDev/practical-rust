@@ -3,6 +3,7 @@ use std::env;
 use std::process;
 
 use rust_learning_path_tests::{run_all_tests, run_level_tests, run_concept_tests};
+use rust_learning_path_tests::quiz_framework::{run_interactive_quiz_session, QuizBank};
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -89,6 +90,25 @@ fn main() {
                 println!("\n🚨 Many tests are failing - needs immediate attention.");
             }
         }
+        "--quiz" | "-q" => {
+            if args.len() >= 3 {
+                let quiz_id = &args[2];
+                let mut quiz_bank = QuizBank::new();
+                
+                match quiz_bank.run_quiz(quiz_id) {
+                    Ok(summary) => {
+                        println!("{}", summary);
+                    }
+                    Err(e) => {
+                        eprintln!("Error: {}", e);
+                        process::exit(1);
+                    }
+                }
+            } else {
+                // Run interactive quiz session
+                run_interactive_quiz_session();
+            }
+        }
         _ => {
             eprintln!("Error: Unknown option '{}'", args[1]);
             print_help();
@@ -111,6 +131,7 @@ fn print_help() {
     println!("    -c, --concept <CONCEPT>      Run tests for specific concept");
     println!("    -v, --validate               Validate all code examples");
     println!("    -s, --stats                  Show test statistics");
+    println!("    -q, --quiz [QUIZ_ID]         Run interactive quizzes (or specific quiz)");
     println!();
     println!("LEVELS:");
     println!("    basic                        Basic Rust concepts");
@@ -145,4 +166,6 @@ fn print_help() {
     println!("    cargo run -- --concept ownership            # Run ownership tests");
     println!("    cargo run -- --validate                     # Validate all examples");
     println!("    cargo run -- --stats                        # Show statistics");
+    println!("    cargo run -- --quiz                         # Run interactive quizzes");
+    println!("    cargo run -- --quiz basic_variables         # Run specific quiz");
 }
