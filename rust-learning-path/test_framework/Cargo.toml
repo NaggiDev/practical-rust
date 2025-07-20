@@ -1,0 +1,25 @@
+[package]
+name = "rust-learning-path-tests"
+version = "0.1.0"
+edition = "2021"
+authors = ["Rust Learning Path Contributors"]
+description = "Comprehensive test framework for Rust Learning Path code examples"
+license = "MIT OR Apache-2.0"
+
+[[bin]]
+name = "test-runner"
+path = "main.rs"
+
+[lib]
+name = "rust_learning_path_tests"
+path = "lib.rs"
+
+[dependencies]
+futures = "0.3"
+
+[dev-dependencies]
+tokio = { version = "1.0", features = ["full"] }
+
+[features]
+default = []
+async-tests = ["tokio"]
