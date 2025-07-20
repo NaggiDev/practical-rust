@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Learning Path - Concept Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .search-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        #searchInput {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .search-btn {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+
+        .search-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .filters {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        select,
+        input[type="checkbox"] {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .results-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .result-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .result-level {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .level-basic {
+            background: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .level-intermediate {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .level-advanced {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .level-expert {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .result-description {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .result-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        .keywords,
+        .projects,
+        .related {
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #f0f0f0;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin: 2px;
+            font-size: 0.8rem;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 2rem;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #667eea;
+        }
+
+        .concept-details {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .cross-references {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #fff3cd;
+            border-radius: 5px;
+        }
+
+        .suggestions {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #d1ecf1;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .search-container {
+                flex-direction: column;
+            }
+
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .result-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🦀 Rust Learning Path</h1>
+            <p class="subtitle">Concept Search & Cross-Reference System</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput"
+                    placeholder="Search for Rust concepts (e.g., ownership, async, traits)..." />
+                <button class="search-btn" onclick="searchConcepts()">Search</button>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="levelFilter">Level:</label>
+                    <select id="levelFilter">
+                        <option value="">All Levels</option>
+                        <option value="basic">Basic</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="projectFilter">Project:</label>
+                    <input type="text" id="projectFilter" placeholder="Filter by project..." />
+                </div>
+
+                <div class="filter-group">
+                    <input type="checkbox" id="exactMatch" />
+                    <label for="exactMatch">Exact match only</label>
+                </div>
+
+                <div class="filter-group">
+                    <button class="search-btn" onclick="showCrossReferences()">Cross References</button>
+                    <button class="search-btn" onclick="showSuggestions()">Learning Path</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="results-section">
+            <div id="results">
+                <div class="no-results">
+                    Enter a search term to find Rust concepts, or browse by level using the filters above.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Concept index data (loaded from concept_index.json)
+        let conceptIndex = null;
+
+        // Load concept index
+        async function loadConceptIndex() {
+            try {
+                const response = await fetch('concept_index.json');
+                conceptIndex = await response.json();
+            } catch (error) {
+                console.error('Error loading concept index:', error);
+                document.getElementById('results').innerHTML =
+                    '<div class="no-results">Error loading concept index. Please ensure concept_index.json is available.</div>';
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function () {
+            loadConceptIndex();
+
+            // Add enter key support for search
+            document.getElementById('searchInput').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    searchConcepts();
+                }
+            });
+        });
+
+        // Calculate relevance score for search
+        function calculateRelevanceScore(query, conceptId, conceptData, exactMatch = false) {
+            query = query.toLowerCase().trim();
+            let score = 0;
+
+            if (exactMatch) {
+                if (query === conceptId.replace(/-/g, ' ') || query === conceptId) {
+                    return 100;
+                }
+                return 0;
+            }
+
+            const title = conceptData.title.toLowerCase();
+            if (title.includes(query)) {
+                score += 50;
+                if (title === query) score += 25;
+            }
+
+            if (conceptId.replace(/-/g, ' ').includes(query)) {
+                score += 40;
+            }
+
+            const keywords = conceptData.keywords || [];
+            keywords.forEach(keyword => {
+                if (keyword.toLowerCase().includes(query)) {
+                    score += 20;
+                    if (keyword.toLowerCase() === query) score += 10;
+                }
+            });
+
+            const description = conceptData.description.toLowerCase();
+            if (description.includes(query)) {
+                score += 10;
+            }
+
+            const queryWords = query.split(' ');
+            queryWords.forEach(word => {
+                if (word.length > 2) {
+                    if (title.includes(word)) score += 5;
+                    if (conceptId.includes(word)) score += 3;
+                    keywords.forEach(keyword => {
+                        if (keyword.toLowerCase().includes(word)) score += 2;
+                    });
+                }
+            });
+
+            return score;
+        }
+
+        // Search concepts
+        function searchConcepts() {
+            if (!conceptIndex) {
+                document.getElementById('results').innerHTML =
+                    '<div class="loading">Loading concept index...</div>';
+                return;
+            }
+
+            const query = document.getElementById('searchInput').value.trim();
+            const levelFilter = document.getElementById('levelFilter').value;
+            const projectFilter = document.getElementById('projectFilter').value.trim().toLowerCase();
+            const exactMatch = document.getElementById('exactMatch').checked;
+
+            if (!query && !levelFilter && !projectFilter) {
+                document.getElementById('results').innerHTML =
+                    '<div class="no-results">Please enter a search term or select a filter.</div>';
+                return;
+            }
+
+            let results = [];
+
+            // Search through concepts
+            Object.entries(conceptIndex.concepts).forEach(([conceptId, conceptData]) => {
+                let score = 0;
+                let matches = true;
+
+                // Apply query search
+                if (query) {
+                    score = calculateRelevanceScore(query, conceptId, conceptData, exactMatch);
+                    if (score === 0) matches = false;
+                }
+
+                // Apply level filter
+                if (levelFilter && conceptData.level !== levelFilter) {
+                    matches = false;
+                }
+
+                // Apply project filter
+                if (projectFilter) {
+                    const projects = conceptData.projects || [];
+                    const projectMatches = projects.some(project =>
+                        project.toLowerCase().includes(projectFilter)
+                    );
+                    if (!projectMatches) matches = false;
+                }
+
+                if (matches) {
+                    results.push({
+                        id: conceptId,
+                        concept: conceptData,
+                        score: score || 1
+                    });
+                }
+            });
+
+            // Sort by relevance score
+            results.sort((a, b) => b.score - a.score);
+
+            displayResults(results);
+        }
+
+        // Display search results
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('results');
+
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No concepts found matching your criteria.</div>';
+                return;
+            }
+
+            let html = `<h3>Found ${results.length} concept(s):</h3>`;
+
+            results.forEach((result, index) => {
+                const concept = result.concept;
+                const levelClass = `level-${concept.level}`;
+
+                html += `
+                    <div class="result-item">
+                        <div class="result-title">${concept.title}</div>
+                        <span class="result-level ${levelClass}">${concept.level.toUpperCase()}</span>
+                        <div class="result-description">${concept.description}</div>
+                        
+                        <div class="result-meta">
+                            ${concept.keywords ? `
+                                <div class="keywords">
+                                    <strong>Keywords:</strong><br>
+                                    ${concept.keywords.map(k => `<span class="tag">${k}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${concept.projects ? `
+                                <div class="projects">
+                                    <strong>Used in projects:</strong><br>
+                                    ${concept.projects.map(p => `<span class="tag">${p}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                            
+                            ${concept.related_concepts ? `
+                                <div class="related">
+                                    <strong>Related concepts:</strong><br>
+                                    ${concept.related_concepts.map(r => `<span class="tag">${r}</span>`).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                        
+                        <div style="margin-top: 1rem;">
+                            <button class="search-btn" onclick="showConceptDetails('${result.id}')">View Details</button>
+                            <button class="search-btn" onclick="showRelatedConcepts('${result.id}')">Show Related</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultsContainer.innerHTML = html;
+        }
+
+        // Show concept details
+        function showConceptDetails(conceptId) {
+            if (!conceptIndex || !conceptIndex.concepts[conceptId]) return;
+
+            const concept = conceptIndex.concepts[conceptId];
+            const detailsHtml = `
+                <div class="concept-details">
+                    <h4>${concept.title}</h4>
+                    <p><strong>Level:</strong> ${concept.level}</p>
+                    <p><strong>Description:</strong> ${concept.description}</p>
+                    <p><strong>File:</strong> ${concept.file_path}#${concept.section}</p>
+                    ${concept.keywords ? `<p><strong>Keywords:</strong> ${concept.keywords.join(', ')}</p>` : ''}
+                    ${concept.projects ? `<p><strong>Projects:</strong> ${concept.projects.join(', ')}</p>` : ''}
+                </div>
+            `;
+
+            // Find the result item and add details
+            const resultItems = document.querySelectorAll('.result-item');
+            resultItems.forEach(item => {
+                if (item.querySelector('.result-title').textContent === concept.title) {
+                    const existingDetails = item.querySelector('.concept-details');
+                    if (existingDetails) {
+                        existingDetails.remove();
+                    } else {
+                        item.insertAdjacentHTML('beforeend', detailsHtml);
+                    }
+                }
+            });
+        }
+
+        // Show related concepts
+        function showRelatedConcepts(conceptId) {
+            if (!conceptIndex || !conceptIndex.concepts[conceptId]) return;
+
+            const concept = conceptIndex.concepts[conceptId];
+            const relatedIds = concept.related_concepts || [];
+
+            let relatedHtml = '<div class="cross-references"><h4>Related Concepts:</h4>';
+
+            relatedIds.forEach(relatedId => {
+                if (conceptIndex.concepts[relatedId]) {
+                    const relatedConcept = conceptIndex.concepts[relatedId];
+                    relatedHtml += `
+                        <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 3px;">
+                            <strong>${relatedConcept.title}</strong> (${relatedConcept.level})<br>
+                            <small>${relatedConcept.description}</small>
+                        </div>
+                    `;
+                }
+            });
+
+            relatedHtml += '</div>';
+
+            // Find the result item and add related concepts
+            const resultItems = document.querySelectorAll('.result-item');
+            resultItems.forEach(item => {
+                if (item.querySelector('.result-title').textContent === concept.title) {
+                    const existingRelated = item.querySelector('.cross-references');
+                    if (existingRelated) {
+                        existingRelated.remove();
+                    } else {
+                        item.insertAdjacentHTML('beforeend', relatedHtml);
+                    }
+                }
+            });
+        }
+
+        // Show cross references
+        function showCrossReferences() {
+            if (!conceptIndex) return;
+
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (!query) {
+                alert('Please enter a search term to find cross-references.');
+                return;
+            }
+
+            let crossRefHtml = '<h3>Cross-References:</h3>';
+            let found = false;
+
+            Object.entries(conceptIndex.cross_references).forEach(([category, conceptIds]) => {
+                if (category.toLowerCase().includes(query)) {
+                    found = true;
+                    crossRefHtml += `<div class="cross-references">
+                        <h4>${category.charAt(0).toUpperCase() + category.slice(1)} Concepts:</h4>`;
+
+                    conceptIds.forEach(conceptId => {
+                        if (conceptIndex.concepts[conceptId]) {
+                            const concept = conceptIndex.concepts[conceptId];
+                            crossRefHtml += `
+                                <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 3px;">
+                                    <strong>${concept.title}</strong> (${concept.level})<br>
+                                    <small>${concept.description}</small>
+                                </div>
+                            `;
+                        }
+                    });
+
+                    crossRefHtml += '</div>';
+                }
+            });
+
+            if (!found) {
+                crossRefHtml += '<div class="no-results">No cross-references found for this term.</div>';
+            }
+
+            document.getElementById('results').innerHTML = crossRefHtml;
+        }
+
+        // Show learning path suggestions
+        function showSuggestions() {
+            if (!conceptIndex) return;
+
+            let suggestionsHtml = '<h3>Learning Path by Level:</h3>';
+
+            Object.entries(conceptIndex.learning_path).forEach(([level, conceptIds]) => {
+                const levelClass = `level-${level}`;
+                suggestionsHtml += `
+                    <div class="suggestions">
+                        <h4><span class="result-level ${levelClass}">${level.toUpperCase()}</span></h4>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                `;
+
+                conceptIds.forEach(conceptId => {
+                    if (conceptIndex.concepts[conceptId]) {
+                        const concept = conceptIndex.concepts[conceptId];
+                        suggestionsHtml += `
+                            <div style="background: white; padding: 1rem; border-radius: 5px; border-left: 3px solid #667eea;">
+                                <strong>${concept.title}</strong><br>
+                                <small>${concept.description}</small>
+                            </div>
+                        `;
+                    }
+                });
+
+                suggestionsHtml += '</div></div>';
+            });
+
+            document.getElementById('results').innerHTML = suggestionsHtml;
+        }
+    </script>
+</body>
+
+</html>
