@@ -7,6 +7,13 @@ pub mod intermediate_tests;
 pub mod advanced_tests;
 pub mod expert_tests;
 pub mod quiz_framework;
+pub mod project_validator;
+pub mod feedback_system;
+pub mod project_validation_runner;
+pub mod project_validator_cli;
+
+#[cfg(test)]
+mod project_validation_tests;
 
 pub use crate::framework::{TestResult, TestSuite, TestRunner, TestSummary, test_case, assert_with_msg};
 
